@@ -15,6 +15,9 @@ events.on("push", (e, p) => {
     docker.privileged = true;
     docker.env = {
     DOCKER_DRIVER: "overlay"
+    uid: "p.secrets.uid"
+    passwd: "p.secrets.passwd"
+
     }
     docker.tasks = [
         "dockerd-entrypoint.sh &",
@@ -22,7 +25,7 @@ events.on("push", (e, p) => {
         "cd /src",
         "ls -l",
         `docker build -t mayursuccessive/hellonode:${commit} .`,
-        `docker login -u ${p.secrets.uid} -p ${p.secrets.passwd}`,
+        "docker login -u $uid -p $passwd",
 	    "docker login success", 
 	    `docker push mayursuccessive/hellonode:${commit}`,
         "docker images"
