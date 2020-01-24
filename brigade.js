@@ -13,21 +13,16 @@ events.on("push", (e, project) => {
     docker.privileged = true;
     docker.env = {
     "DOCKER_DRIVER": "overlay",
-    // "uid": "project.secrets.uid",
-    // "passwd": "project.secrets.passwd"
+    
     }
 
     docker.tasks = [
         "dockerd-entrypoint.sh &",
         "sleep 10",
-        `echo ${project.secrets.uid}`,
-        `echo ${project.secrets.passwd}`,
-        `echo ${project.secrets.connect}`,
-       // `echo ${passwd}`,
-        //`docker build -t mayursuccessive/hellonode:${commit} .`,
-       // "docker login -u $uid -p $passwd",
+        `docker build -t mayursuccessive/hellonode:${commit} .`,
+        `docker login -u ${project.secrets.uid} -p ${project.secrets.passwd}`,
 	    "echo docker login success", 
-	    //`docker push mayursuccessive/hellonode:${commit}`,
+	    `docker push mayursuccessive/hellonode:${commit}`,
         "docker images"
         ];
 
