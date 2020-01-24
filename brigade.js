@@ -21,7 +21,7 @@ events.on("push", (e, p) => {
         "sleep 10",
         "cd /src",
         "ls -l",
-        "docker build -t mayursuccessive/image-processing:${commit} .",
+        `docker build -t mayursuccessive/hellonode:${commit} .`,
         "docker images"
         ];
 
