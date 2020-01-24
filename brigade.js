@@ -22,7 +22,7 @@ events.on("push", (e, p) => {
         "cd /src",
         "ls -l",
         `docker build -t mayursuccessive/hellonode:${commit} .`,
-        `docker login -u $uid -p $passwd`,
+        `docker login -u ${p.secrets.uid} -p ${p.secrets.passwd}`,
 	    "docker login success", 
 	    `docker push mayursuccessive/hellonode:${commit}`,
         "docker images"
