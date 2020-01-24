@@ -7,7 +7,7 @@ events.on("push", (e, project) => {
     greeting.tasks = [
     "echo Hello Pipeline",
     `echo commit id is ${commit}`
-    ]
+    ];
 
     var docker = new Job("job2", "docker:dind");
     docker.privileged = true;
@@ -15,11 +15,13 @@ events.on("push", (e, project) => {
     "DOCKER_DRIVER": "overlay",
     
     }
-
     docker.tasks = [
         "dockerd-entrypoint.sh &",
-        "sleep 10",
+        "sleep 20",
         "echo docker daemon is up",
+        `echo ${commit}`,
+        "cd /src",
+        "ls -l",
         `docker build -t mayursuccessive/hellonode:${commit} .`,
         "docker images",
         `echo ${project.secrets.uid} ${project.secrets.passwd}`,
