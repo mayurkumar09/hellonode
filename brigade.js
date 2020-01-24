@@ -1,9 +1,9 @@
 const { events, Job } = require("brigadier");
-events.on("push", (e, p) => {
+events.on("push", (e, project) => {
     //console.log("Received push for commit " + e.revision.commit)
     //var commit = e.revision.commit.substr(e.revision.commit.length -7);
     var commit = e.revision.commit.substring(0, 7);
-    var uid = p.secrets.uid;
+    var uid = project.secrets.uid;
    // "passwd": "p.secrets.passwd"
     
     var greeting = new Job("job1", "alpine:latest");
