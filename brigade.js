@@ -14,11 +14,11 @@ events.on("push", (e, p) => {
     var docker = new Job("job2", "docker:dind");
     docker.privileged = true;
     docker.env = {
-    DOCKER_DRIVER: "overlay"
-    uid: "p.secrets.uid"
+    DOCKER_DRIVER: "overlay",
+    uid: "p.secrets.uid",
     passwd: "p.secrets.passwd"
-
     }
+
     docker.tasks = [
         "dockerd-entrypoint.sh &",
         "sleep 10",
