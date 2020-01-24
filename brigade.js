@@ -3,20 +3,21 @@ events.on("push", (e, p) => {
     //console.log("Received push for commit " + e.revision.commit)
     //var commit = e.revision.commit.substr(e.revision.commit.length -7);
     var commit = e.revision.commit.substring(0, 7);
+    var uid = p.secrets.uid;
+   // "passwd": "p.secrets.passwd"
+    
     var greeting = new Job("job1", "alpine:latest");
     //greeting.storage.enabled = true;
     greeting.tasks = [
     "echo Hello Pipeline",
-    `echo commit id is ${commit}`
-
+    `echo commit id is ${commit}`,
+    `echo ${uid}`
     ]
 
     var docker = new Job("job2", "docker:dind");
     docker.privileged = true;
     docker.env = {
     "DOCKER_DRIVER": "overlay",
-    "uid": "p.secrets.uid",
-    "passwd": "p.secrets.passwd"
     }
 
     docker.tasks = [
