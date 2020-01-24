@@ -10,7 +10,7 @@ events.on("push", (e, p) => {
     `echo commit id is ${commit}`
 
     ]
-    
+
     var docker = new Job("job2", "docker:dind");
     docker.privileged = true;
     docker.env = {
@@ -22,6 +22,9 @@ events.on("push", (e, p) => {
         "cd /src",
         "ls -l",
         `docker build -t mayursuccessive/hellonode:${commit} .`,
+        "docker login -u $uid -p $passwd",
+	"docker login success", 
+	`docker push mayursuccessive/hellonode:${commit}`,
         "docker images"
         ];
 
