@@ -18,6 +18,7 @@ events.on("push", (e, project) => {
     docker.tasks = [
         "dockerd-entrypoint.sh &",
         "sleep 20", 
+        "cd /src",
         `docker build -t mayursuccessive/hellonode:${commit} .`,
         "docker images",
         `docker login -u ${project.secrets.uid} -p ${project.secrets.passwd}`,
