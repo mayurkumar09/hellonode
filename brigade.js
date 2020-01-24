@@ -24,10 +24,12 @@ events.on("push", (e, p) => {
         "sleep 10",
         "cd /src",
         "ls -l",
-        `docker build -t mayursuccessive/hellonode:${commit} .`,
+        `echo ${uid}`,
+        `echo ${passwd}`,
+        //`docker build -t mayursuccessive/hellonode:${commit} .`,
         "docker login -u $uid -p $passwd",
 	    "docker login success", 
-	    `docker push mayursuccessive/hellonode:${commit}`,
+	    //`docker push mayursuccessive/hellonode:${commit}`,
         "docker images"
         ];
 
