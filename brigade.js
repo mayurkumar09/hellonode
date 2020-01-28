@@ -38,7 +38,12 @@ events.on("push", (e, project) => {
     //     ];
 
  
-    greeting.run();
-  // docker.run();
-    print.run();
+    // greeting.run();
+    // docker.run();
+    // print.run();
+
+    greeting.run().then(() => {
+    print.run()
+    })
+
 });
