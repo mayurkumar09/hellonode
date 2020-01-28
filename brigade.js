@@ -1,4 +1,3 @@
-
 const { events, Job } = require("brigadier");
 
 events.on("push", (e, project) => {
@@ -16,7 +15,7 @@ events.on("push", (e, project) => {
     print.storage.enabled = true;
     print.tasks = [
 
-    "cat" + dest
+    "cat " + dest
     ];
 
     // var docker = new Job("job2", "docker:dind");
