@@ -91,3 +91,7 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+worker:
+  defaultBuildStorageClass: nfs
+  defaultCacheStorageClass: nfs
