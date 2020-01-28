@@ -91,7 +91,3 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
-
-kubernetes:
-  buildStorageClass: nfs
-  cacheStorageClass: nfs
