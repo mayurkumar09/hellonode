@@ -11,7 +11,7 @@ events.on("push", (e, project) => {
     `echo commit id is ${commit} >` + dest 
     ];
 
-    var print = new Job("job1", "alpine:latest");
+    var print = new Job("job3", "alpine:latest");
     print.storage.enabled = true;
     print.tasks = [
 
@@ -39,6 +39,6 @@ events.on("push", (e, project) => {
 
  
     greeting.run();
-    docker.run();
+  // docker.run();
     print.run();
 });
