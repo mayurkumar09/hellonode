@@ -16,7 +16,9 @@ events.on("push", (e, project) => {
     print.storage.enabled = true;
     print.tasks = [
     "helm version",
-    "gcloud version"
+    "echo helm it is",
+    "gcloud version",
+    "kubcetl get pods"
     
     ];
 
