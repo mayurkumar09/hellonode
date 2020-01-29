@@ -12,12 +12,11 @@ events.on("push", (e, project) => {
     `echo commit id is ${commit} >` + dest 
     ];
 
-    var print = new Job("job3", "devth/helm:latest");
+    var print = new Job("job3", "alpine:latest");
     print.storage.enabled = true;
     print.tasks = [
-    "helm version",
-    "gcloud version"
-    
+
+    "cat " + dest
     ];
 
     // var docker = new Job("job2", "docker:dind");
