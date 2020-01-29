@@ -18,7 +18,7 @@ events.on("push", (e, project) => {
     "helm version",
     "echo helm it is",
     "gcloud version",
-    "kubcetl get pods"
+    "kubectl get pods"
     
     ];
 
