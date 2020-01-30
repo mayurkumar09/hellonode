@@ -9,7 +9,7 @@ events.on("push", () => {
     DOCKER_DRIVER: "overlay"
     }
     job.tasks = [
-        "dockerd-entrypoint.sh &",
+        "dockerd &",
         "sleep 10",
         "cd /src",
         "ls -l",
