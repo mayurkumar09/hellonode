@@ -1,52 +1,21 @@
 const { events, Job } = require("brigadier");
-
-events.on("push", (e, project) => {
-    var commit = e.revision.commit.substring(0, 7);
-   // var dest = "/mnt/brigade/share/abc.text";
+events.on("push", () => {
     
-    var greeting = new Job("job1", "alpine:latest");
-   // greeting.storage.enabled = true;
-    greeting.tasks = [
-    "echo Hello Pipeline",
-   // `echo commit id is ${commit} >` + dest 
-    ];
-
- 
-
-    var docker = new Job("job2", "docker:dind");
-    docker.privileged = true;
-    docker.storage.enabled = true;
-    docker.env = {
-    "DOCKER_DRIVER": "overlay",
-    
+     
+    var job = new Job("dockerbuild", "docker:dind");
+    job.privileged = true;
+    job.env = {
+    DOCKER_DRIVER: "overlay"
     }
-    docker.tasks = [
+    job.tasks = [
         "dockerd-entrypoint.sh &",
-        "sleep 20", 
+        "sleep 10",
         "cd /src",
-       // `docker build -t mayursuccessive/hellonode:${commit} .`,
-        "docker images",
-       // `docker login -u ${project.secrets.uid} -p ${project.secrets.passwd}`,
-	    "echo docker login success", 
-	    //`docker push mayursuccessive/hellonode:${commit}`,
-        //"docker images"
+        "ls -l",
+//        "docker build -t mayursuccessive/image-processing:v1 .",
+        "docker images"
         ];
     
-    // var deploy = new Job("job3", "devth/helm:latest");
-    // deploy.storage.enabled = true;
-    // deploy.tasks = [
-    // "cd /src",
-    // "ls -l",
-    // "kubectl create -f "
-    
-    // ];
- 
-    greeting.run();
-    docker.run();
-   // deploy.run();
-
-    // greeting.run().then(() => {
-    // deploy.run()
-    // })
+    job.run();
 
 });
