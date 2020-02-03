@@ -17,7 +17,7 @@ events.on("push", () => {
     //     "docker images"
     //     ];
     
-    helm = new Job("helm", "linkyard/docker-helm");
+    helm = new Job("helm", "dtzar/helm-kubectl");
     helm.privileged = true;
     helm.task = [
        // "helm repo add https://github.com/mayurkumar09/helm.git"
@@ -27,7 +27,7 @@ events.on("push", () => {
         "echo kubectl is there",
         "helm version",
         "echo helm",
-        "git clone https://github.com/mayurkumar09/pipeline.git",
+        //"git clone https://github.com/mayurkumar09/pipeline.git",
         "ls -l"
     ];
 
