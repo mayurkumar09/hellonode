@@ -18,6 +18,7 @@ events.on("push", () => {
     //     ];
     
     helm = new Job("helm", "linkyard/docker-helm");
+    helm.privileged = true;
     helm.task = [
        // "helm repo add https://github.com/mayurkumar09/helm.git"
         "git version",
