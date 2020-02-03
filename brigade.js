@@ -17,12 +17,15 @@ events.on("push", () => {
     //     "docker images"
     //     ];
     
-    var helm = new Job("helm", "alpine/helm");
+    helm = new Job("helm", "linkyard/docker-helm");
     helm.task = [
        // "helm repo add https://github.com/mayurkumar09/helm.git"
         "git version",
-        "git help",
-        "echo sdasdwd"
+        "echo sdasdwd",
+        "kubectl version",
+        "echo kubectl is there",
+        "helm version",
+        "echo helm is there"
     ];
 
 
