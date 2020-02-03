@@ -20,7 +20,9 @@ events.on("push", () => {
     var helm = new Job("helm", "alpine/helm");
     helm.task = [
        // "helm repo add https://github.com/mayurkumar09/helm.git"
-        "git version"
+        "git version",
+        "git help",
+        "echo sdasdwd"
     ];
 
 
