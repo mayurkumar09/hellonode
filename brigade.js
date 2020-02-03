@@ -21,11 +21,11 @@ events.on("push", () => {
     helm.privileged = true;
     helm.task = [
        // "helm repo add https://github.com/mayurkumar09/helm.git"
-        "git version",
+        "git show",
         "echo sdasdwd",
-        "kubectl version",
+        "kubectl cluster-info",
         "echo kubectl is there",
-        "helm version",
+        "helm ls",
         "echo helm",
         //"git clone https://github.com/mayurkumar09/pipeline.git",
         "ls -l"
