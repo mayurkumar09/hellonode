@@ -25,7 +25,7 @@ events.on("push", () => {
         "kubectl version",
         "echo kubectl is there",
         "helm version",
-        "echo helm is there"
+        "echo helm"
     ];
 
 
