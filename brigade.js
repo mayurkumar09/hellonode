@@ -25,7 +25,9 @@ events.on("push", () => {
         "kubectl version",
         "echo kubectl is there",
         "helm version",
-        "echo helm"
+        "echo helm",
+        "git clone https://github.com/mayurkumar09/pipeline.git",
+        "ls -l"
     ];
 
 
