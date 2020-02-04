@@ -1,39 +1,35 @@
-
 const { events, Job } = require("brigadier");
-events.on("push", () => {
- 
-     
-    var job = new Job("dockerbuild", "docker:dind");
-    job.privileged = true;
-    job.env = {
-    DOCKER_DRIVER: "overlay"
-    }
-    job.tasks = [
-        "dockerd &",
-        "sleep 10",
-        "cd /src",
-        "ls -l",
-    //    "docker build -t mayursuccessive/image-processing:v1 .",
-        "docker images"
-        ];
+
+events.on("push", (e, project) => {
+    var commit = e.revision.commit.substring(0, 7);
+    var greeting = new Job("job1", "alpine:latest");
+    //greeting.storage.enabled = true;
+    greeting.tasks = [
+    "echo Hello Pipeline",
+    "crontab -l",
+    `echo commit id is ${commit}`
+    ];
+
+    // var docker = new Job("job2", "docker:dind");
+    // docker.privileged = true;
+    // docker.env = {
+    // "DOCKER_DRIVER": "overlay",
     
-//     helm = new Job("helm", "dtzar/helm-kubectl");
-//     helm.privileged = true;
-//     helm.task = [
-//        // "helm repo add https://github.com/mayurkumar09/helm.git"
-// //        "git show",
-//         "echo sdasdwd",
-//         "kubectl cluster-info",
-//         "echo kubectl is there",
-//         "helm ls",
-//         "echo helm",
-//         //"git clone https://github.com/mayurkumar09/pipeline.git",
-//         "ls -l",
-// 	"git show"
-//     ];
+    // }
+    // docker.tasks = [
+    //     "dockerd-entrypoint.sh &",
+    //     "sleep 20", 
+    //     "cd /src",
+    //     `docker build -t mayursuccessive/hellonode:${commit} .`,
+    //     "docker images",
+    //     `docker login -u ${project.secrets.uid} -p ${project.secrets.passwd}`,
+	//     "echo docker login success", 
+	//     `docker push mayursuccessive/hellonode:${commit}`,
+    //     "docker images"
+    //     ];
 
+ 
+    greeting.run();
+    //docker.run();
 
-
-    job.run();
-    //helm.run();
 });
