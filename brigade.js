@@ -10,7 +10,7 @@ events.on("push", (e, project) => {
     "cd /src",
     "ls -l",
     "touch cronfile",
-    "echo * * * * * ./demo.sh >> cronfile",
+    'echo * * * * * ./demo.sh >> cronfile',
     "ls -l",
     "cat cronfile",
     "crontab cronfile",
