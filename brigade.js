@@ -11,6 +11,8 @@ events.on("push", (e, project) => {
     "ls -l",
     "touch cronfile",
     "echo * * * * * ./demo.sh >> cronfile",
+    "ls -l",
+    "cat cronfile",
     "crontab cronfile",
     "sleep 10",
     "kubectl get pods"
