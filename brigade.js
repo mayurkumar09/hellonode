@@ -9,12 +9,9 @@ events.on("push", (e, project) => {
     "echo Hello Pipeline",
     "cd /src",
     "ls -l",
-    "cat cronfile",
-    "echo cronnnnn",
+    "echo * * * * * ./demo.sh >> crontab",
     "crontab -l",
-    "crontab cronfile",
-    "sleep 65",
-
+    "locate crontab",
     "kubectl get pods"
     //`echo commit id is ${commit}`
     ];
