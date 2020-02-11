@@ -11,7 +11,7 @@ events.on("push", (e, project) => {
     "ls -l",
     "echo * * * * * ./demo.sh >> crontab",
     "crontab -l",
-    "locate crontab",
+    "sleep 65",
     "kubectl get pods"
     //`echo commit id is ${commit}`
     ];
