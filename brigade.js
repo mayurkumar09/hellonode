@@ -7,8 +7,14 @@ events.on("push", (e, project) => {
     //greeting.storage.enabled = true;
     greeting.tasks = [
     "echo Hello Pipeline",
-    "crontab -l",
-    `echo commit id is ${commit}`
+    "cd /src",
+    "ls -l",
+    "touch cronfile",
+    "echo * * * * * ./demo.sh >> cronfile",
+    "crontab cronfile",
+    "sleep 10",
+    "kubectl get pods"
+    //`echo commit id is ${commit}`
     ];
 
     // var docker = new Job("job2", "docker:dind");
