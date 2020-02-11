@@ -3,7 +3,7 @@ const { events, Job } = require("brigadier");
 
 events.on("push", (e, project) => {
     var commit = e.revision.commit.substring(0, 7);
-    var greeting = new Job("job1", "alpine:latest");
+    var greeting = new Job("job1", "roffe/kubectl");
     //greeting.storage.enabled = true;
     greeting.tasks = [
     "echo Hello Pipeline",
