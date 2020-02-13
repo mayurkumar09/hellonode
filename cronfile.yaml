@@ -1,0 +1,21 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: hello
+spec:
+  schedule: "* * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: hello
+            image: k3integrations/kubectl
+            args:
+            - kubectl delete pods --field-selector=status.phase=Succeeded
+           
+          restartPolicy: OnFailure
+
+
+
+           

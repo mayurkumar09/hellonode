@@ -3,17 +3,12 @@ const { events, Job } = require("brigadier");
 
 events.on("push", (e, project) => {
     var commit = e.revision.commit.substring(0, 7);
-    var greeting = new Job("job1", "roffe/kubectl");
+    var greeting = new Job("job1", "mayursuccessive/kubectl");
     //greeting.storage.enabled = true;
     greeting.tasks = [
-    "echo Hello Pipeline",
-    "cd /src",
-    "ls -l",
-    "echo * * * * * ./demo.sh >> crontab",
-    "crontab -l",
-    "cron -f",
-    "crontab crontab",
-    "sleep 65",
+    "ls -lrt",
+    "kubectl get pods",
+    "./demo.sh",
     "kubectl get pods"
     //`echo commit id is ${commit}`
     ];
