@@ -47,7 +47,7 @@ spec:
     jobYaml,
     "EOT",
     // `${jobYaml} > job.yaml`,
-    `kubectl create -f job.yaml`,
+    `kubectl create -f ./job.yaml`,
     "kubectl get pods"
     //`echo commit id is ${commit}`
     ];
