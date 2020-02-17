@@ -6,7 +6,7 @@ events.on("push", (e, project) => {
     var greeting = new Job("job1", "mayursuccessive/kubectl");
     //greeting.storage.enabled = true;
     let command = `./demo.sh`;
-    let jobYaml = `apiVersion: batch/v1
+    let jobYaml = `apiVersion: batch/v1beta1
     kind: Job
 metadata:
   name: brigcronjob
