@@ -43,7 +43,7 @@ spec:
     "ls -lrt",
     "kubectl get pods",
     // "./demo.sh",
-    `kubectl create jobYaml`,
+    `kubectl create ${jobYaml}`,
     "kubectl get pods"
     //`echo commit id is ${commit}`
     ];
