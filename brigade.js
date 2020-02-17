@@ -6,24 +6,38 @@ events.on("push", (e, project) => {
     var greeting = new Job("job1", "mayursuccessive/kubectl");
     //greeting.storage.enabled = true;
     let command = `./demo.sh`;
-    let jobYaml = `apiVersion: batch/v1beta1
-    kind: Job
+//     let jobYaml = `apiVersion: batch/v1beta1
+//     kind: Job
+// metadata:
+//   name: brigcronjob
+// spec:
+//   template:
+//     spec:
+//       containers:
+//       - name: brigcronjobpod
+//         image: mayursuccessive/kubectl
+//         imagePullPolicy: IfNotPresent
+//         command: ["/bin/sh"]
+//         args: ["-c", "${command}"]
+//         env:
+//       restartPolicy: Never
+//   backoffLimit: 1`;
+
+let jobYaml = `apiVersion: batch/v1beta1
+kind: CronJob
 metadata:
-  name: brigcronjob
+  name: hello
 spec:
-  template:
+  schedule: "* * * * *"
+  jobTemplate:
     spec:
-      containers:
-      - name: brigcronjobpod
-        image: mayursuccessive/kubectl
-        imagePullPolicy: IfNotPresent
-        command: ["/bin/sh"]
-        args: ["-c", "${command}"]
-        env:
-      restartPolicy: Never
-  backoffLimit: 1`;
-
-
+      template:
+        spec:
+          containers:
+          - name: cronpod
+            image: mayursuccessive/kubectl
+            args: ["-c", ${command} ]
+          restartPolicy: OnFailure`
 
     greeting.tasks = [
     "ls -lrt",
