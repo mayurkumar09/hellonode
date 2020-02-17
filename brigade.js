@@ -46,6 +46,7 @@ spec:
     "cat >Job.yaml <<'EOT'",
     jobYaml,
     "EOT",
+    "cat job.yaml",
     // `${jobYaml} > job.yaml`,
     `kubectl create -f ./job.yaml`,
     "kubectl get pods"
