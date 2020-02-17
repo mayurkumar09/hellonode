@@ -10,10 +10,8 @@ spec:
         spec:
           containers:
           - name: hello
-            image: k3integrations/kubectl
-            args:
-            - kubectl delete pods --field-selector=status.phase=Succeeded
-           
+            image: mayursuccessive/kubectl
+            args: ["-c","./demo.sh"]
           restartPolicy: OnFailure
 
 

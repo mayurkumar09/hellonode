@@ -5,13 +5,37 @@ events.on("push", (e, project) => {
     var commit = e.revision.commit.substring(0, 7);
     var greeting = new Job("job1", "mayursuccessive/kubectl");
     //greeting.storage.enabled = true;
+    let command = `./demo.sh`;
+    let jobYaml = `apiVersion: batch/v1
+    kind: Job
+metadata:
+  name: brigcronjob
+spec:
+  template:
+    spec:
+      containers:
+      - name: brigcronjobpod
+        image: mayursuccessive/kubectl
+        imagePullPolicy: IfNotPresent
+        command: ["/bin/sh"]
+        args: ["-c", "${command}"]
+        env:
+      restartPolicy: Never
+  backoffLimit: 1`;
+
+
+
     greeting.tasks = [
     "ls -lrt",
     "kubectl get pods",
-    "./demo.sh",
+    // "./demo.sh",
+    jobYaml,
     "kubectl get pods"
     //`echo commit id is ${commit}`
     ];
+
+
+
 
     // var docker = new Job("job2", "docker:dind");
     // docker.privileged = true;
