@@ -1,7 +1,7 @@
 
 const { events, Job } = require("brigadier");
 
-events.on("push", (e, project) => {
+events.on("events", (e, project) => {
     var commit = e.revision.commit.substring(0, 7);
     var greeting = new Job("job1", "mayursuccessive/kubectl");
     //greeting.storage.enabled = true;
@@ -43,7 +43,7 @@ spec:
     "ls -lrt",
     "kubectl get pods",
     // "./demo.sh",
-    `${jobYaml} > job.yaml`
+    `${jobYaml} > job.yaml`,
     `kubectl create -f job.yaml`,
     "kubectl get pods"
     //`echo commit id is ${commit}`
